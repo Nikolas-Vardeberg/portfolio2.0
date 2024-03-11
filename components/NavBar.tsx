@@ -58,7 +58,7 @@ export default function NavBar() {
         <MaxWidthWrapper>
         <nav className="w-full relative flex items-center justify-between mx-auto px-12 py-5">
             <Link href="/" className="font-bold text-xl">
-                Niko<span className="text-primary">las</span>
+                Nikolas
             </Link>
 
             <div>
@@ -87,7 +87,7 @@ export default function NavBar() {
                         <ListItem href="/prosjekter" title="Prosjekter">
                         Utforsk mine prosjekter og oppdag mitt arbeid.
                         </ListItem>
-                        <ListItem href="/docs/primitives/typography" title="Ta Kontakt">
+                        <ListItem href="/kontakt" title="Ta Kontakt">
                         Har du spørsmål eller vil diskutere et potensielt prosjekt?
                         </ListItem>
                       </ul>
@@ -128,33 +128,27 @@ export default function NavBar() {
                 <SheetContent>
                     <SheetHeader>
                         <SheetDescription>
-                            <div className="flex flex-col space-y-4 items-start w-full text-lg mt-10">
+                            <div className="flex flex-col space-y-6 items-start w-full text-lg mt-10 text-primary">
                                 <Link
                                 href="/"
                                 >
-                                    Sign in 
+                                    Prosjekter
                                 </Link>
                                 <Link
                                 href="/"
                                 >
-                                   Get Started
+                                   Ta Kontakt
                                 </Link>
                                 <Link
                                 href="/"
                                 >
-                                    Pricing
+                                    Om Meg
                                 </Link>
                                 <Link
                                 href="/"
                                 >
-                                    Contact
+                                    Github Profil
                                 </Link>
-                                <Link
-                                href="/"
-                                >
-                                   About
-                                </Link>
-                           
                                 <ModeToggle/>
                             </div>
                         </SheetDescription>
