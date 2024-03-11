@@ -23,8 +23,9 @@ import {
 
 import { ModeToggle } from "./ModeToggle";
 import MaxWidthWrapper from "./MaxWidthWrapper";
-import { ArrowDown } from "lucide-react";
+import { AlignJustify, ArrowDown } from "lucide-react";
 import { AvatarIcon } from "@radix-ui/react-icons";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTrigger } from "./ui/sheet";
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -56,70 +57,116 @@ export default function NavBar() {
     return(
         <MaxWidthWrapper>
         <nav className="w-full relative flex items-center justify-between mx-auto px-12 py-5">
-            <Link href="/" className="font-bold text-2xl">
+            <Link href="/" className="font-bold text-xl">
                 Niko<span className="text-primary">las</span>
             </Link>
 
             <div>
             <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <AvatarIcon className="h-6 w-6" />
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      Nikolas Vardeberg
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Nikolas Vardeberg.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/prosjekter" title="Prosjekter">
-              Utforsk mine prosjekter og oppdag mitt arbeid.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Ta Kontakt">
-              Har du spørsmål eller vil diskutere et potensielt prosjekt?
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Om Meg</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Ta Kontakt
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+                <NavigationMenuList className="hidden md:flex md:space-x-4">
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                        <li className="row-span-3">
+                          <NavigationMenuLink asChild>
+                            <a
+                              className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                              href="/"
+                            >
+                              <AvatarIcon className="h-6 w-6" />
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                Nikolas Vardeberg
+                              </div>
+                              <p className="text-sm leading-tight text-muted-foreground">
+                                Nikolas Vardeberg.
+                              </p>
+                            </a>
+                          </NavigationMenuLink>
+                        </li>
+                        <ListItem href="/prosjekter" title="Prosjekter">
+                        Utforsk mine prosjekter og oppdag mitt arbeid.
+                        </ListItem>
+                        <ListItem href="/docs/primitives/typography" title="Ta Kontakt">
+                        Har du spørsmål eller vil diskutere et potensielt prosjekt?
+                        </ListItem>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>Om Meg</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                        {components.map((component) => (
+                          <ListItem
+                            key={component.title}
+                            title={component.title}
+                            href={component.href}
+                          >
+                            {component.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/docs" legacyBehavior passHref>
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Ta Kontakt
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
 
-            <ModeToggle />
+            <div className="md:hidden">
+            <Sheet>
+                <SheetTrigger>
+                    <AlignJustify />
+                </SheetTrigger>
+                <SheetContent>
+                    <SheetHeader>
+                        <SheetDescription>
+                            <div className="flex flex-col space-y-4 items-start w-full text-lg mt-10">
+                                <Link
+                                href="/"
+                                >
+                                    Sign in 
+                                </Link>
+                                <Link
+                                href="/"
+                                >
+                                   Get Started
+                                </Link>
+                                <Link
+                                href="/"
+                                >
+                                    Pricing
+                                </Link>
+                                <Link
+                                href="/"
+                                >
+                                    Contact
+                                </Link>
+                                <Link
+                                href="/"
+                                >
+                                   About
+                                </Link>
+                           
+                                <ModeToggle/>
+                            </div>
+                        </SheetDescription>
+                    </SheetHeader>
+                </SheetContent>
+            </Sheet>
+            </div>
+
+            <div className="max-md:hidden">
+              <ModeToggle/>
+            </div>
+            
         </nav>
         </MaxWidthWrapper>
     )
