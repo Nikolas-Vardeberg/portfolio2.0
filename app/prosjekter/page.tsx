@@ -24,7 +24,10 @@ const page = async() => {
     const data: simpleBlogCard[] = await getData();
 
     return(
-        <div className="grid grid-cols-1  md:grid-cols-2 mt-5 gap-5">
+
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 md:px-12">
+        <div className="my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+
     {data.map((post, idx) => (
       <Card key={idx}>
         <Image
@@ -41,12 +44,14 @@ const page = async() => {
             {post.smallDescription}
           </p>
           <Button asChild className="w-full mt-7">
-            <Link href={`/blog/${post.currentSlug}`}>Read More</Link>
+            <Link href={`/prosjekter/${post.currentSlug}`}>Read More</Link>
           </Button>
         </CardContent>
       </Card>
     ))}
-  </div>
+
+    </div>
+    </div>
     )
 }
 
