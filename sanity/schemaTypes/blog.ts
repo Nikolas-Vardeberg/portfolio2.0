@@ -9,6 +9,16 @@ export default {
         title: 'Title of blog article',
       },
       {
+        name: 'tags',
+        type: 'array',
+        of: [{type: "reference", to: [{type:"tag"}]}]
+      },
+      {
+        name: "githubrepo",
+        type: "string",
+        title: "Github Repo link",
+      },
+      {
         name: 'slug',
         type: 'slug',
         title: 'Slug of your blog article',
@@ -36,5 +46,6 @@ export default {
           },
         ],
       },
+      
     ],
   }

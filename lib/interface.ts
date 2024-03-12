@@ -3,6 +3,7 @@ export interface simpleBlogCard {
     smallDescription: string;
     currentSlug: string;
     titleImage: any;
+    tags: string;
 }
 
 export interface fullBlog {
@@ -10,4 +11,6 @@ export interface fullBlog {
     title: string;
     content: any;
     titleImage: any;
+    tags: string[];
+    githubrepo: string;
 }
