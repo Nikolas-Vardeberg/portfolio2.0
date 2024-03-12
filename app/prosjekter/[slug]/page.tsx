@@ -16,7 +16,8 @@ async function getData(slug: string) {
             content,
             titleImage,
             "tags": tags[]->name,
-            githubrepo
+            githubrepo,
+            "url": gallery[].asset->url
     }[0]`;
 
     const data = await client.fetch(query);
@@ -32,6 +33,12 @@ export default async function BlogArticle({
     const data: fullBlog = await getData(params.slug);
 
     const tags = Array.isArray(data.tags) ? data.tags : [];
+
+    const urls = Array.isArray(data.gallery) ? data.gallery : [];
+
+    console.log(urls)
+
+    console.log(tags)
 
     return (
         <main className="max-w-2xl mx-auto px-4">
@@ -53,17 +60,23 @@ export default async function BlogArticle({
           </div>
         </h1>
 
+
+        
+
         <Image
           src={urlFor(data.titleImage).url()}
           width={800}
           height={800}
           alt="Title Image"
           priority
-          className="rounded-lg mt-8 border"
+          className="rounded mt-8 border"
         />
 
 
-        <div className="flex items-center justify-center space-x-8">
+
+
+
+        <div className="flex items-center justify-center">
           <Link className={buttonVariants({ size: "lg", className: "mt-7"})}
             href={data.githubrepo}
           >

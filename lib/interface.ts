@@ -4,6 +4,7 @@ export interface simpleBlogCard {
     currentSlug: string;
     titleImage: any;
     tags: string;
+    gallery: any[];
 }
 
 export interface fullBlog {
@@ -13,4 +14,5 @@ export interface fullBlog {
     titleImage: any;
     tags: string[];
     githubrepo: string;
+    gallery: any[];
 }

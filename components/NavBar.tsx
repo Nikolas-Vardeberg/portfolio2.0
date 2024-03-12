@@ -55,8 +55,9 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavBar() {
     return(
-        <MaxWidthWrapper>
+      <MaxWidthWrapper className="sticky inset-x-0 top-0 z-30 backdrop-blur-lg transition-all">
         <nav className="w-full relative flex items-center justify-between mx-auto px-12 py-5">
+           
             <Link href="/" className="font-bold text-xl">
                 Nikolas
             </Link>
@@ -160,7 +161,7 @@ export default function NavBar() {
             <div className="max-md:hidden">
               <ModeToggle/>
             </div>
-            
+           
         </nav>
         </MaxWidthWrapper>
     )

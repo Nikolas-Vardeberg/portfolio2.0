@@ -32,6 +32,16 @@ export default {
         title: 'Title Image',
       },
       {
+        name: "gallery",
+        title: "Gallery",
+        type: "array",
+        of: [{ type: "image",
+        options: {
+          hotspot: true
+        }
+      }]
+      },
+      {
         name: 'smallDescription',
         type: 'text',
         title: 'Small Description',
