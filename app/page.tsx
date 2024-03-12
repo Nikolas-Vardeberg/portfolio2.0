@@ -35,6 +35,7 @@ export default async function Home () {
           height={200}
           width={200}
           alt="Title Image"
+          draggable={false}
         />
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
           Work with a coder who gets your programming challenges.
@@ -52,7 +53,7 @@ export default async function Home () {
       <div className='mx-auto mb-20 mt-20 max-w-5xl sm:mt-56'>
         <div className='mb-12 px-6 lg:px-8'>
           <div className='mx-auto max-w-2xl sm:text-center'>
-            <h2 className='mt-2 font-bold text-4xl sm:text-5xl'>
+            <h2 className='mt-2 text-4xl font-bold md:text-5xl lg:text-6xl'>
               My Skills & Projects
             </h2>
             <p className='mt-4 text-lg text-gray-500'>
@@ -85,9 +86,25 @@ export default async function Home () {
             </CardContent>
           </Card>
         ))}
+        </div>
+      </div>
 
-      </div>
-      </div>
+
+      <div className='mx-auto mb-20 mt-20 max-w-5xl sm:mt-56'>
+        <div className='mb-12 px-6 lg:px-8'>
+          <div className='mx-auto max-w-2xl sm:text-center'>
+            <h2 className='mt-2 text-4xl font-bold md:text-5xl lg:text-6xl'>
+              Ta Kontakt
+            </h2>
+            <p className='mt-4 text-lg text-gray-500'>
+            Har du spørsmål eller vil diskutere et potensielt prosjekt?
+            </p>
+          </div>
+        </div>
+
+
+
+        </div>
     
 
       </div>

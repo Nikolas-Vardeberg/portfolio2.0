@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { url } from "inspector";
 
 async function getData(slug: string) {
     const query =`
@@ -17,7 +18,9 @@ async function getData(slug: string) {
             titleImage,
             "tags": tags[]->name,
             githubrepo,
-            "url": gallery[].asset->url
+            "gallery": gallery[]{
+              "url": asset->url
+          }
     }[0]`;
 
     const data = await client.fetch(query);
@@ -34,7 +37,9 @@ export default async function BlogArticle({
 
     const tags = Array.isArray(data.tags) ? data.tags : [];
 
-    const urls = Array.isArray(data.gallery) ? data.gallery : [];
+    const gallery = Array.isArray(data.gallery) ? data.gallery : [];
+    const urls = gallery.map(item => item.url);
+
 
     console.log(urls)
 
@@ -52,6 +57,10 @@ export default async function BlogArticle({
           <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
             {data.title}
           </span>
+
+          {urls && urls.sort().map((url, index) => (
+            <span key={index}>{url}</span>
+          ))}
 
           <div className="mt-6 flex space-x-2 items-center justify-center">
             {tags && tags.sort().map((tag, index) => (
