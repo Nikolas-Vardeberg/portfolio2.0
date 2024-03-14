@@ -16,7 +16,10 @@ async function getData() {
       titleImage
   }`;
 
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, {}, {
+    cache: "no-cache"
+  });
+
 
   return data;
 }

@@ -1,13 +1,21 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+"use client"
+
+
+import Image from "next/image";
+
 import { fullBlog } from "../../../lib/interface";
 import { client, urlFor } from "../../../lib/sanity";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
+
+
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { url } from "inspector";
+
+import Link from "next/link";
+
+import { ArrowRight } from "lucide-react";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+
 
 async function getData(slug: string) {
     const query =`
@@ -23,7 +31,9 @@ async function getData(slug: string) {
           }
     }[0]`;
 
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, {}, {
+      cache: "no-cache"
+    });
     return data
 }
 
@@ -58,10 +68,6 @@ export default async function BlogArticle({
             {data.title}
           </span>
 
-          {urls && urls.sort().map((url, index) => (
-            <span key={index}>{url}</span>
-          ))}
-
           <div className="mt-6 flex space-x-2 items-center justify-center">
             {tags && tags.sort().map((tag, index) => (
               <Badge key={index} variant="default">{tag}</Badge>
@@ -69,8 +75,19 @@ export default async function BlogArticle({
           </div>
         </h1>
 
+       {/* {urls && urls.sort().map((url, index) => (
+          <Image
+            src={url}
+            width={800}
+            height={800}
+            alt="gallery of images"
+            priority
+            key={index}
+          />
+        ))}*/} 
 
         
+
 
         <Image
           src={urlFor(data.titleImage).url()}
@@ -78,11 +95,8 @@ export default async function BlogArticle({
           height={800}
           alt="Title Image"
           priority
-          className="rounded mt-8 border"
+          className="rounded mt-8 border my-10"
         />
-
-
-
 
 
         <div className="flex items-center justify-center">
