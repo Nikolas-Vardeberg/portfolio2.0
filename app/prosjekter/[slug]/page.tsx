@@ -1,7 +1,10 @@
 "use client"
 
+import React from "react";
 
 import Image from "next/image";
+
+import { Carousel } from 'react-responsive-carousel';
 
 import { fullBlog } from "../../../lib/interface";
 import { client, urlFor } from "../../../lib/sanity";
@@ -13,7 +16,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 import Link from "next/link";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 
@@ -36,6 +39,7 @@ async function getData(slug: string) {
     });
     return data
 }
+
 
 
 export default async function BlogArticle({
@@ -74,20 +78,6 @@ export default async function BlogArticle({
             ))}
           </div>
         </h1>
-
-       {/* {urls && urls.sort().map((url, index) => (
-          <Image
-            src={url}
-            width={800}
-            height={800}
-            alt="gallery of images"
-            priority
-            key={index}
-          />
-        ))}*/} 
-
-        
-
 
         <Image
           src={urlFor(data.titleImage).url()}

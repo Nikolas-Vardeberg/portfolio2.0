@@ -7,6 +7,6 @@ export const tag = defineType({
         {
             name: "name",
             type: "string"
-        }
+        },
     ]
 })

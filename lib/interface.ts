@@ -11,6 +11,11 @@ export interface simpleBlogCard {
     }
 }
 
+export interface simpleText {
+    title: string;
+    subtitle: string;
+}
+
 export interface fullBlog {
     currentSlug: string;
     title: string;

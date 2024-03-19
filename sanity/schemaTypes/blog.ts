@@ -1,7 +1,9 @@
-export default {
+import { defineType } from "sanity";
+
+export const blog = defineType({
     name: 'blog',
     type: 'document',
-    title: 'Blog',
+    title: 'Prosjekter',
     fields: [
       {
         name: 'title',
@@ -58,4 +60,4 @@ export default {
       },
       
     ],
-  }
+  })

@@ -59,11 +59,11 @@ export default function Page() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="max-w-md w-full flex flex-col gap-4"
+          className="max-w-screen-lg w-full flex flex-col gap-4"
         >
           <FormField
             control={form.control}
@@ -132,7 +132,7 @@ export default function Page() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Type your message here." {...field} className="max-h-40" />
+                    <Textarea placeholder="Type your message here." {...field} className="min-h-40 max-h-96" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -144,6 +144,6 @@ export default function Page() {
           </Button>
         </form>
       </Form>
-    </main>
+    </div>
   );
 }

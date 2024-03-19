@@ -1,11 +1,12 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { simpleBlogCard } from "@/lib/interface";
+import { simpleBlogCard, simpleText } from "@/lib/interface";
 import { client, urlFor } from "@/lib/sanity";
 import { ArrowRight, Copyright } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+
 
 async function getData() {
   const query =`
@@ -20,14 +21,25 @@ async function getData() {
     cache: "no-cache"
   });
 
-
   return data;
 }
 
+async function getDataPages() {
+  const query =`
+  *[_id=="landingPage"][0]`;
+
+  const dataPages = await client.fetch(query, {}, {
+    cache: "no-cache"
+  });
+
+  return dataPages;
+
+}
 
 export default async function Home () {
 
   const data: simpleBlogCard[] = await getData();
+  const dataPages: simpleText[] = await getDataPages();
 
   return (
     <>
@@ -41,10 +53,12 @@ export default async function Home () {
           draggable={false}
         />
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-          Work with a coder who gets your programming challenges.
+          {dataPages.title}
         </h1>
 
-        <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg mx-9">As a student named Nikolas, I'm passionate about programming, especially in Next.js and React. Based in Brumunddal, I specialize in fullstack development, working with startups and corporations on web design, branding, and programming.</p>
+        <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg mx-9">
+          {dataPages.subtitle}
+        </p>
 
         <Link className={buttonVariants({ size: "lg", className: "mt-7"})}
           href="/admin" target="_blank"
@@ -104,8 +118,6 @@ export default async function Home () {
             </p>
           </div>
         </div>
-
-
 
         </div>
     
